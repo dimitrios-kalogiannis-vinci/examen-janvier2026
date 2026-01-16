@@ -24,5 +24,10 @@ export function validateEmail(email: string): boolean {
     if(domainPart.endsWith('.')) {
         return false;
     }
+
+    //Third criteria : Must not contain spaces
+    if(email.includes(' ')) {
+        return false;
+    }
     return true;
 }

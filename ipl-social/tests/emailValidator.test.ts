@@ -46,5 +46,24 @@ describe('must contain a point in the domain part', () => {
     });
 
 });
-    
-    
+
+
+//Must not contain spaces
+describe('must not contain spaces', () => {
+    it('should reject email with spaces', () => {
+        const email = 'test@ example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
+    it('should reject email with spaces in the local part', () => {
+        const email = 'test example@example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
+    it('should accept email without spaces', () => {
+        const email = 'test@example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(true);
+    });
+});
+
