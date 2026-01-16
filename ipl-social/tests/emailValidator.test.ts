@@ -26,8 +26,25 @@ describe('Email Validator', () => {
 });
 
 
-    
+//Must contain a point in the domain part (after the "@")
 
+describe('must contain a point in the domain part', () => {
+    it('should reject email without point in domain part', () => {
+        const email = 'test@examplecom';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
+    it('should accept email with point in domain part', () => {
+        const email = 'test@example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(true);
+    });
+    it('should reject email with the point at the end', () => {
+        const email = 'test@examplecom.';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
 
+});
     
     

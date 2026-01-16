@@ -8,11 +8,21 @@
  */
 
 export function validateEmail(email: string): boolean {
-    //Validate the email adress based on the IPL Social requirements
+    //First criteria : Validate the email adress based on the IPL Social requirements
 
     if(!email.includes('@')) {
         return false;
     }
-    return true;
 
+
+    //Second criteria : Must contain a point in the domain part (after the "@")
+    const atIndex = email.indexOf('@');
+    const domainPart = email.substring(atIndex + 1);
+    if(!domainPart.includes('.')) {
+        return false;
+    }
+    if(domainPart.endsWith('.')) {
+        return false;
+    }
+    return true;
 }
