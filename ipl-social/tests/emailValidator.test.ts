@@ -67,3 +67,21 @@ describe('must not contain spaces', () => {
     });
 });
 
+//Must have text before and after the "@"
+describe('must have text before and after the "@"', () => {
+    it('should reject email with no text before "@"', () => {
+        const email = '@example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
+    it('should reject email with no text after "@"', () => {
+        const email = 'test@';
+        const result = validateEmail(email);
+        expect(result).toBe(false);
+    });
+    it('should accept email with text before and after "@"', () => {
+        const email = 'test@example.com';
+        const result = validateEmail(email);
+        expect(result).toBe(true);
+    });
+});
